@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-	
+
 	<link href="appAdmin.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -35,51 +35,53 @@
                 <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
                 <div class="row">
                     <header>
-                        <div class="col-md-7">
-						</div>
-                        <div class="col-md-5">
-                            <div class="header-rightside">
-                                <ul class="list-inline header-top pull-right">
-                                    <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Ajouter un projet</a></li>
-                                    
-                                  
-                           
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+											<?php
+												 session_start();
+												 echo ' Bienvenue ' .  $_SESSION['nom'] . ' !';
+											 ?>
                     </header>
                 </div>
-				
+
 				<div class="row">
 					<div class="col-md-10">
 						<h1> Projets diponible</h1>
 					</div>
 				</div>
-				
+
                 <div class="table-container">
 							<table class="table">
-								<tbody>
+								<thead>
 									<tr id="tableTitre">
-									
+
+										<td width="40%" class="colonneTitre">
+										Titre
+										</td>
+
 										<td width="20%" class="colonneTitre">
 										Auteur
 										</td>
-										
-										<td width="50%" class="colonneTitre">
-										Titre
+
+										<td width="20%" class="colonneTitre">
+										Thème
 										</td>
-										
+
 										<td width="15%" class="colonneTitre">
-										Nombre étudiants
+										Nb d'étudiants max
 										</td>
-										
-										<td class="colonneTitre">
+
+										<td width="15%" class="colonneTitre">
+										Date
+										</td>
+
+										<td width="5%" class="colonneTitre">
 										Télécharger
 										</td>
 									</tr>
+								</thead>
+
+								<tbody>
 								</tbody>
-								
+
 							</table>
 						</div>
             </div>
