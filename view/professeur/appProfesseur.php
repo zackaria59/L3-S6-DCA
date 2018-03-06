@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-	
+
 	<link href="appProfesseur.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -40,9 +40,9 @@
                             <div class="header-rightside">
                                 <ul class="list-inline header-top pull-right">
                                     <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Ajouter un projet</a></li>
-                                    
-                                  
-                                       
+
+
+
                                     </li>
                                 </ul>
                             </div>
@@ -50,7 +50,7 @@
                     </header>
                 </div>
                 <div class="user-dashboard">
-                    
+
                 </div>
             </div>
         </div>
