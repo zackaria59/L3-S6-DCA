@@ -1,5 +1,5 @@
 <?php
-
+//1' OR 1=1 #
 require("bdd/gestionBDD.php");
 
 
@@ -12,7 +12,8 @@ require("bdd/gestionBDD.php");
 		$flag=false;  // devient true si on identifie le type d'utilisateur
 
 		// On vérifie si l'id et mdp entrée correspond à un compte 'Admin'
-		$result=$db->query("select * from admin where id='".$id."' AND mdp='".$mdp."'");
+		$result=$db->prepare("select * from admin where id=? AND mdp=?");
+		$result->execute(array($id, $mdp));
 		if($row=$result->fetch())
 		{
 			$autorisation=true;
@@ -23,7 +24,8 @@ require("bdd/gestionBDD.php");
 		}
 
 		// On vérifie si l'id et mdp entrée correspond à un compte 'Professeur'
-		$result=$db->query("select idprofesseur from professeur where identifiant='".$id."' AND mdp='".$mdp."'");
+		$result=$db->prepare("select idprofesseur from professeur where identifiant=? AND mdp=?");
+		$result->execute(array($id, $mdp));
 		if($row=$result->fetch() && !$flag)
 		{
 			$autorisation=true;
@@ -31,7 +33,8 @@ require("bdd/gestionBDD.php");
 		}
 
 		// On vérifie si l'id et mdp entrée correspond à un compte 'Etudiant'
-		$result=$db->query("select idetudiant from etudiant where identifiant='".$id."' AND mdp='".$mdp."'");
+		$result=$db->prepare("select idetudiant from etudiant where identifiant=?' AND mdp=?");
+		$result->execute(array($id, $mdp));
 		if($row=$result->fetch() && !$flag)
 		{
 			$autorisation=true;
