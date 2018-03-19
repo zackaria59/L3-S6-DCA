@@ -159,4 +159,11 @@ class Etudiant
         $this->adresseMail = $adresseMail;
     }
 
+    public function  toString()
+    {
+        $descriptif='id='.$this->getIdEtudiant().'nom='.$this->getNom().'prenom='.$this->getPrenom();
+
+        return $descriptif;
+    }
+
 }

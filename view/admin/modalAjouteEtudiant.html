@@ -1,0 +1,65 @@
+
+<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Enregistrer un étudiant</h4>
+            </div>
+            <form action="../../model/dao/gestionEtudiant.php?p=ajouteEtudiant" method="post" accept-charset="utf-8">
+                <div class="modal-body" style="padding: 5px;">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
+                            <input class="form-control" name="nom" placeholder="nom" type="text" required autofocus />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
+                            <input class="form-control" name="prenom" placeholder="prenom" type="text" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                            <input class="form-control" name="mail" placeholder="E-mail" type="text" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                            <input class="form-control" name="identifiant" placeholder="identifiant" type="text" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                            <input class="form-control" name="mdp" placeholder="mot de passe" type="text" required />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-footer" style="margin-bottom:-14px;">
+                    <input type="submit" class="btn btn-success" value="Enregistrer"/>
+
+                    <!--<span class="glyphicon glyphicon-remove"></span>-->
+                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Annuler</button>
+                </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="message" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Notification</h4>
+            </div>
+            <div class="modal-body">
+                <p id="messageContenu">Un étudiant a été modifié</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>

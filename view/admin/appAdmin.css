@@ -1,5 +1,9 @@
 /*Main CSS*/
 
+input[type="text"]:disabled {
+    background: #ffffff;
+    border: #FFFFFF;
+}
 
 /*Login Signup Page*/
 a:focus,a:hover,a{

@@ -18,6 +18,7 @@ require("bdd/gestionBDD.php");
 			$autorisation=true;
 			session_start();
 			$_SESSION['type']=1;
+            $_SESSION['nom']='Administrateur';
 			$flag=true;
 		}
 
