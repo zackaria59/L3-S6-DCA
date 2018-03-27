@@ -25,14 +25,29 @@ class Professeur
      * @param $mdp
      * @param $adresseMail
      */
-    public function __construct($idProfesseur, $nom, $prenom, $identifiant, $mdp, $adresseMail)
+
+    public function __construct($donnees)
     {
-        $this->idProfesseur = $idProfesseur;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->identifiant = $identifiant;
-        $this->mdp = $mdp;
-        $this->adresseMail = $adresseMail;
+        if(!empty($donnees))
+        {
+            $this->hydrate($donnees);
+        }
+    }
+
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value)
+        {
+            // On récupère le nom du setter correspondant à l'attribut.
+            $method = 'set'.ucfirst($key);
+
+            // Si le setter correspondant existe.
+            if (method_exists($this, $method))
+            {
+                // On appelle le setter.
+                $this->$method($value);
+            }
+        }
     }
 
     public function ajouterBDD($db){

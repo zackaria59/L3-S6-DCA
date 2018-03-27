@@ -1,0 +1,32 @@
+<script src="gestionProfesseur.js"></script>
+<div id="appProfesseur" class="container">
+
+    <button id='ajouteProfesseur' data-toggle='modal' data-target='#prof' class='btn btn-primary btn-lg'> Ajouter un professeur </button>
+
+    <div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Professeurs</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                <tr class="filters">
+                    <th><input type="text" class="form-control" placeholder="Nom" disabled></th>
+                    <th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+                    <th><input type="text" class="form-control" placeholder="Adresse mail" disabled></th>
+                    <th><input type="text" class="form-control" placeholder="Identifiant" disabled></th>
+                    <th><input type="text" class="form-control" placeholder="Mot de passe" disabled></th>
+                    <th><input type="text" class="form-control" placeholder="Modifier" disabled></th>
+                </tr>
+                </thead>
+                <tbody id="tableauProfesseur">
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

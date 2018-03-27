@@ -13,6 +13,10 @@
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
 
+    <link href="editor.css" type="text/css" rel="stylesheet"/>
+    <script src="editor.js"></script>
+
+
     <script src="appAdmin.js"></script>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
@@ -32,12 +36,13 @@
                     <ul>
                         <li class="active"><a href="appAdmin.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Projet diponible</span></a></li>
                         <li id="gestionEtudiant"><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Gestion etudiant</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Gestion professeur</span></a></li>
+                        <li id="gestionProfesseur"><a href="#"><i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Gestion professeur</span></a></li>
 						<li><a href="#"><i class="glyphicon glyphicon-book" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Gestion projet</span></a></li>
 						<li><a href="#"><i class="glyphicon glyphicon-th-large" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Gestion groupe</span></a></li>
                       </ul>
                 </div>
             </div>
+
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
                 <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
                 <div class="row">
@@ -49,60 +54,29 @@
 
                 </div>
 
+
+
                 <div id="appContent">
-				<div class="row">
-					<div class="col-md-10">
-						<h1> Projets diponible</h1>
-					</div>
-				</div>
 
-                <div class="table-container">
-							<table class="table">
-								<thead>
-									<tr id="tableTitre">
 
-										<td width="40%" class="colonneTitre">
-										Titre
-										</td>
+                    <?php
+                    require("gestionProjet.html");
+                    require("gestionEtudiant.html");
+                    require("gestionProfesseur.html");
+                    require("formAjouteProjet.html");
+                    ?>
 
-										<td width="20%" class="colonneTitre">
-										Auteur
-										</td>
-
-										<td width="20%" class="colonneTitre">
-										Thème
-										</td>
-
-										<td width="15%" class="colonneTitre">
-										Nb d'étudiants max
-										</td>
-
-										<td width="15%" class="colonneTitre">
-										Date
-										</td>
-
-										<td width="5%" class="colonneTitre">
-										Télécharger
-										</td>
-									</tr>
-								</thead>
-
-								<tbody>
-								</tbody>
-
-							</table>
-						</div>
                 </div>
             </div>
         </div>
-        <?php
-        require("modalAjouteEtudiant.html");
-        ?>
+
     </div>
 
+    <?php
 
-
-
+    require("modalAjouteEtudiant.html");
+    require("modalAjouteProfesseur.html");
+    ?>
 
 </body>
 
