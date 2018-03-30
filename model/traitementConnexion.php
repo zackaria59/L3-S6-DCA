@@ -33,7 +33,7 @@ require("bdd/gestionBDD.php");
 		}
 
 		// On vérifie si l'id et mdp entrée correspond à un compte 'Etudiant'
-		$result=$db->prepare("select idetudiant from etudiant where identifiant=?' AND mdp=?");
+		$result=$db->prepare("select idetudiant from etudiant where identifiant=? AND mdp=?");
 		$result->execute(array($id, $mdp));
 		if($row=$result->fetch() && !$flag)
 		{
