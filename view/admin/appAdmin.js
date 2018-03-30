@@ -29,34 +29,90 @@ function notification(msg)
     $("#message").modal();
 }
 
+function getFormAddProjet()
+{
+    $("#appContent").children().hide();
+    $("#formAjouteProjet").show();
+}
+
+function afficheProjet() {
+
+    $.ajax({
+        url: "../../controller/controller.php?action=projets",
+        cache: false
+    })
+        .done(function (html) {
+
+            $("#tableauProjets").append(html);
+
+        });
+}
 
 $( document ).ready(function() {
 
-    $.ajax({
-        url: '../../model/dao/gestionEtudiant.php?p=professeurs',
-        content: 'text/html'
-    })
-        .done(function( html ) {
-            $('#tableauEtudiant').append(html);
-        });
+    $("#txtEditor").Editor();
+    afficheProjet();
+    $("#appEtudiant").hide();
+    $("#appProfesseur").hide();
+    $("#formAjouteProjet").hide();
 
     $("#gestionEtudiant").click(function () {
 
         $.ajax({
-            url: "gestionEtudiant.php",
+            url: "../../controller/controller.php?action=etudiants",
             cache: false
         })
             .done(function( html ) {
 
                 $("li").removeClass("active");
                 $("#gestionEtudiant").addClass("active");
-                $("#appContent").empty();
-
+                $("#appContent").children().hide();
+                $("#tableauEtudiant tr").remove();
+                $("#appEtudiant").show();
                 $("#appContent").append("<button id='ajouteEtudiant' data-toggle='modal' data-target='#contact' class='btn btn-primary btn-lg'> Ajouter un etudiant </button>")
-
-                $( "#appContent" ).append( html );
+                $( "#tableauEtudiant" ).append( html );
 
             });
+
+    });
+
+    $("#ajouteProjet").click(function () {
+        getFormAddProjet();
+    });
+
+    $("#gestionProfesseur").click(function () {
+
+        $.ajax({
+            url: "../../controller/controller.php?action=professeurs",
+            cache: false
+        })
+            .done(function( html ) {
+
+                $("li").removeClass("active");
+                $("#gestionProfesseur").addClass("active");
+                $("#appContent").children().hide();
+                $("#tableauProfesseur tr").remove();
+                $("#appProfesseur").show();
+                $( "#tableauProfesseur" ).append( html );
+
+            });
+    });
+
+    $("#enregistreProjet").click(function () {
+
+        alert(1);
+
+        $.ajax({
+            url: "../../controller/controller.php?action=ajouteProjet",
+            type : 'POST', // Le type de la requête HTTP, ici devenu POST
+            dataType: 'html',
+            data:"titre="+$("#titre").val()+"&technologie="+$("#technologie").val()+"&description="+$("#txtEditor").val()+"&nbEtudiant="+$("#nbEtudiant").val()+"&file="+$("#projFile").val()
+        })
+            .done(function( html ) {
+
+                alert(html);
+            });
+
 
     });
 

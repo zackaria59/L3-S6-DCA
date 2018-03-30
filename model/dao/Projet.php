@@ -15,8 +15,42 @@ class Projet
     private $nbEtudiant;
     private $technologie;
     private $urlFichier;
+    private $idProfesseur;
+    private $dateP;
 
-    private $auteur;
+    /**
+     * @return mixed
+     */
+    public function getDateP()
+    {
+        return $this->dateP;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDateP($dateP)
+    {
+        $this->dateP = $dateP;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getIdProjet()
+    {
+        return $this->idProjet;
+    }
+
+    /**
+     * @param mixed $idProjet
+     */
+    public function setIdProjet($idProjet)
+    {
+        $this->idProjet = $idProjet;
+    }
+
 
     /**
      * projet constructor.
@@ -28,6 +62,31 @@ class Projet
      * @param $auteur
      */
 
+    public function __construct($donnees)
+    {
+        if(!empty($donnees))
+        {
+            $this->hydrate($donnees);
+        }
+    }
+
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value)
+        {
+            // On récupère le nom du setter correspondant à l'attribut.
+            $method = 'set'.ucfirst($key);
+
+            // Si le setter correspondant existe.
+            if (method_exists($this, $method))
+            {
+                // On appelle le setter.
+                $this->$method($value);
+            }
+        }
+    }
+
+    /*
     public function __construct($idProjet, $titre, $description, $nbEtudiant, $technologie, $urlFichier, $auteur, $groupe)
     {
         $this->titre = $titre;
@@ -39,6 +98,7 @@ class Projet
         $this->groupe = $groupe;
         $this->idProjet = $idProjet;
     }
+    */
 
     public function ajouterBDD($db){
 
@@ -68,6 +128,7 @@ class Projet
     public function setTitre($titre)
     {
         $this->titre = $titre;
+        echo $titre.' ';
     }
 
     /**
@@ -84,6 +145,7 @@ class Projet
     public function setDescription($description)
     {
         $this->description = $description;
+        echo $description.' ';
     }
 
     /**
@@ -100,6 +162,7 @@ class Projet
     public function setNbEtudiant($nbEtudiant)
     {
         $this->nbEtudiant = $nbEtudiant;
+        echo $nbEtudiant.' ';
     }
 
     /**
@@ -116,6 +179,7 @@ class Projet
     public function setTechnologie($technologie)
     {
         $this->technologie = $technologie;
+        echo $technologie.' ';
     }
 
     /**
@@ -129,25 +193,32 @@ class Projet
     /**
      * @param mixed $urlFichier
      */
+
     public function setUrlFichier($urlFichier)
     {
+        $urlFichier = strtr($urlFichier,
+            'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+            'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+        $urlFichier = preg_replace('/([^.a-z0-9]+)/i', '-', $urlFichier);
         $this->urlFichier = $urlFichier;
+        echo $urlFichier.' ';
     }
 
     /**
      * @return mixed
      */
-    public function getAuteur()
+    public function getIdProfesseur()
     {
-        return $this->auteur;
+        return $this->idProfesseur;
     }
 
     /**
      * @param mixed $auteur
      */
-    public function setAuteur($auteur)
+    public function setIdProfesseur($idProfesseur)
     {
-        $this->auteur = $auteur;
+        $this->idProfesseur = $idProfesseur;
+        echo $idProfesseur.' ';
     }
 
 

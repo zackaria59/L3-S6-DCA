@@ -6,7 +6,7 @@
  * Time: 14:11
  */
 require ('Etudiant.php');
-require ('../bdd/gestionBDD.php');
+require_once('gestionBDD.php');
 
 class gestionEtudiant
 {
@@ -128,68 +128,77 @@ class gestionEtudiant
     }
 }
 
-if($_GET['p']=='etudiants'){
 
-    $conn=new gestionBDD();
-    $db=$conn->connexionDB();
 
-    $gestionE= new gestionEtudiant($db);
-    $etudiants=$gestionE->getListeEtudiant();
-    $html=$gestionE->getTabHtml($etudiants);
+
+/*****************************************************/
+
+function getTableauEtudiants()
+{
+
+    $conn = new gestionBDD();
+    $db = $conn->connexionDB();
+
+    $gestionE = new gestionEtudiant($db);
+    $etudiants = $gestionE->getListeEtudiant();
+    $html = $gestionE->getTabHtml($etudiants);
 
     echo $html;
 
 }
-elseif($_GET['p']=='enregistreEtudiant'){
 
-    $etudiant=new Etudiant([]);
+if(isset($_GET["p"])) {
+    if ($_GET['p'] == 'etudiants') {
 
-    $conn=new gestionBDD();
-    $db=$conn->connexionDB();
 
-    $gestionE= new gestionEtudiant($db);
 
-    if(isset($_POST['idEtudiant']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail']) && isset($_POST['identifiant']) && isset($_POST['mdp']) )
-    {
-        $etudiant->setIdEtudiant($_POST['idEtudiant']);
-        $etudiant->setNom($_POST['nom']);
-        $etudiant->setPrenom($_POST['prenom']);
-        $etudiant->setIdentifiant($_POST['identifiant']);
-        $etudiant->setAdresseMail($_POST['mail']);
-        $etudiant->setMdp($_POST['mdp']);
-    }
+    } elseif ($_GET['p'] == 'enregistreEtudiant') {
 
-    $gestionE->updateEtudiant($etudiant);
-}
-elseif($_GET['p']=='ajouteEtudiant')
-{
-    echo 'ok1';
-    $etudiant=new Etudiant([]);
+        $etudiant = new Etudiant([]);
 
-    if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail']) && isset($_POST['identifiant']) && isset($_POST['mdp']) )
-    {
-        echo 'ok2';
+        $conn = new gestionBDD();
+        $db = $conn->connexionDB();
 
-        $conn=new gestionBDD();
-        $db=$conn->connexionDB();
-        $gestionE= new gestionEtudiant($db);
-        $reponse=$gestionE->verifieInformationValide($_POST['mail'], $_POST['identifiant']);
+        $gestionE = new gestionEtudiant($db);
 
-        echo "reponse".$reponse;
-
-        if($reponse==1)
-        {
-            echo 'ok3';
-
+        if (isset($_POST['idEtudiant']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail']) && isset($_POST['identifiant']) && isset($_POST['mdp'])) {
+            $etudiant->setIdEtudiant($_POST['idEtudiant']);
             $etudiant->setNom($_POST['nom']);
             $etudiant->setPrenom($_POST['prenom']);
             $etudiant->setIdentifiant($_POST['identifiant']);
             $etudiant->setAdresseMail($_POST['mail']);
             $etudiant->setMdp($_POST['mdp']);
+        }
 
-            $gestionE->addEtudiant($etudiant);
+        $gestionE->updateEtudiant($etudiant);
+    } elseif ($_GET['p'] == 'ajouteEtudiant') {
+
+        $etudiant = new Etudiant([]);
+
+        if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail']) && isset($_POST['identifiant']) && isset($_POST['mdp'])) {
+
+            $conn = new gestionBDD();
+            $db = $conn->connexionDB();
+            $gestionE = new gestionEtudiant($db);
+            $reponse = $gestionE->verifieInformationValide($_POST['mail'], $_POST['identifiant']);
+
+            echo "reponse" . $reponse;
+
+            if ($reponse == 1) {
+                echo 'ok3';
+
+                $etudiant->setNom($_POST['nom']);
+                $etudiant->setPrenom($_POST['prenom']);
+                $etudiant->setIdentifiant($_POST['identifiant']);
+                $etudiant->setAdresseMail($_POST['mail']);
+                $etudiant->setMdp($_POST['mdp']);
+
+                $gestionE->addEtudiant($etudiant);
+            }
         }
     }
+
+
 }
 
 ?>

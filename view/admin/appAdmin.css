@@ -1,5 +1,6 @@
 /*Main CSS*/
 
+
 input[type="text"]:disabled {
     background: #ffffff;
     border: #FFFFFF;
@@ -15,11 +16,12 @@ li,ul{
     padding: 0;
     margin: 0;
 }
+
+
 .header-top i {
     font-size: 18px;
 }
 .bg-image {
-    background: url(../images/background-login.jpg) no-repeat 0 0 / cover;
     position: relative;
     width: 100%;
     height: 100vh;
